@@ -13,7 +13,7 @@ def get_book_content():
         ch_id = row['chapter']
         s_id = row['sentence']
         text = row['text']
-        print(ch_id, " -> ", s_id, " -> ", text)
+        # print(ch_id, " -> ", s_id, " -> ", text)
 
         if ch_id not in book_dict:
             book_dict[ch_id] = []

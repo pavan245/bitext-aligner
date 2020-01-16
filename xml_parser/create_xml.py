@@ -1,5 +1,8 @@
 from xml.etree import ElementTree as ET
 from xml.dom import minidom
+import os
+import json
+from pathlib import Path
 
 
 def create_xml_file(book_dict, book_metadata):
@@ -50,14 +53,40 @@ def create_xml_file(book_dict, book_metadata):
 
     # tree = ET.ElementTree(book_root)
     # tree.write(filename)
+    root_dir = os.path.dirname(os.path.dirname(__file__))
+    output_dir = os.path.join(root_dir, "xml_files")
     filename = book_root.get('id') + "_" + lang.text + ".xml"
-    file = open(filename, 'w')
+    file = open(output_dir + '/' + filename, 'w')
+    file_path = file.name
+    print('XML File Path :: ', file_path)
     file.write(prettify(book_root))
+    file.close()
+    json_obj = {}
+    json_obj['book_id'] = book_root.get('id')
+    json_obj['xml_file'] = filename
+    json_obj['lang'] = lang.text
+    json_obj['xml_file_path'] = file_path
+    json_obj['is_validated'] = False
+    json_obj['is_saved_to_db'] = False
+    add_xml_book_data_to_json(json_obj)
 
 
-def prettify(element):
+def add_xml_book_data_to_json(json_obj):
+    json_file_path = Path('json/books.json')
+
+    json_file = open(json_file_path, 'r')
+    json_data = json.load(json_file)
+    json_file.close()
+
+    json_file = open(json_file_path, 'w')
+    json_data['books'].append(json_obj)
+    json_file.write(json.dumps(json_data, indent=4))
+    json_file.close()
+
+
+def prettify(root):
     """ Return a pretty-printed XML string for the Element.
-        """
-    rough_string = ET.tostring(element, 'utf-8')
+    """
+    rough_string = ET.tostring(root, 'utf-8')
     parsed = minidom.parseString(rough_string)
-    return parsed.toprettyxml(indent="    ")
+    return parsed.toprettyxml(indent="\t")
