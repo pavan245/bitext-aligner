@@ -7,7 +7,7 @@ from pathlib import Path
 
 def create_xml_file(book_dict, book_metadata):
     book_root = ET.Element('book')
-    book_root.set('id', book_metadata['book_id'])
+    book_root.set('code', book_metadata['book_id'])
 
     book_info = ET.SubElement(book_root, 'bookInfo')
     content = ET.SubElement(book_root, 'content')
@@ -45,7 +45,7 @@ def create_xml_file(book_dict, book_metadata):
 
     for key in book_dict.keys():
         chapter = ET.SubElement(content, 'chapter')
-        chapter.set('id', str(key))
+        chapter.set('num', str(key))
         for idx, val in enumerate(book_dict[key]):
             sentence = ET.SubElement(chapter, 'sentence')
             sentence.set('id', str(idx + 1))
