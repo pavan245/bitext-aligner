@@ -48,38 +48,45 @@ def create_xml_file(book_dict, book_metadata):
         chapter.set('num', str(key))
         for idx, val in enumerate(book_dict[key]):
             sentence = ET.SubElement(chapter, 'sentence')
-            sentence.set('id', str(idx + 1))
+            sentence.set('num', str(idx + 1))
             sentence.text = val
 
     # tree = ET.ElementTree(book_root)
     # tree.write(filename)
     root_dir = os.path.dirname(os.path.dirname(__file__))
     output_dir = os.path.join(root_dir, "xml_files")
-    filename = book_root.get('id') + "_" + lang.text + ".xml"
+    filename = book_root.get('code') + "_" + lang.text + ".xml"
     file = open(output_dir + '/' + filename, 'w')
     file_path = file.name
     print('XML File Path :: ', file_path)
     file.write(prettify(book_root))
     file.close()
     json_obj = {}
-    json_obj['book_id'] = book_root.get('id')
+    bbok_code = book_root.get('code')
     json_obj['xml_file'] = filename
     json_obj['lang'] = lang.text
     json_obj['xml_file_path'] = file_path
     json_obj['is_validated'] = False
     json_obj['is_saved_to_db'] = False
-    add_xml_book_data_to_json(json_obj)
+    add_xml_book_data_to_json(bbok_code, json_obj)
 
 
-def add_xml_book_data_to_json(json_obj):
+def add_xml_book_data_to_json(book_code, json_obj):
     json_file_path = Path('json/books.json')
 
     json_file = open(json_file_path, 'r')
     json_data = json.load(json_file)
     json_file.close()
 
+    books = json_data['books']
+    if book_code in books.keys():
+        books[book_code].append(json_obj)
+    else:
+        books[book_code] = [json_obj]
+
+    json_data['books'] = books
+
     json_file = open(json_file_path, 'w')
-    json_data['books'].append(json_obj)
     json_file.write(json.dumps(json_data, indent=4))
     json_file.close()
 
