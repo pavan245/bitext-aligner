@@ -24,13 +24,12 @@ def create_xml_file(book_dict, book_metadata):
     total_chapters = ET.SubElement(book_info, 'totalChapters')
     total_chapters.text = book_metadata['totalChapters']
 
+    source = ET.SubElement(book_info, 'source')
+    source.text = book_metadata['source']
+
     if 'description' in book_metadata:
         description = ET.SubElement(book_info, 'description')
         description.text = book_metadata['description']
-
-    if 'source' in book_metadata:
-        source = ET.SubElement(book_info, 'source')
-        source.text = book_metadata['source']
 
     if 'isbn' in book_metadata:
         isbn = ET.SubElement(book_info, 'isbn')

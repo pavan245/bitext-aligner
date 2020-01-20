@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:element name="book">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="bookInfo" minOccurs="1" maxOccurs="1" />
+                <xsd:element ref="content" minOccurs="1" maxOccurs="1" />
+            </xsd:sequence>
+            <xsd:attribute name="code" type="xsd:string" use="required" />
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="bookInfo">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="title" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                <xsd:element name="lang" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                <xsd:element name="isTranslation" type="xsd:boolean" minOccurs="1" maxOccurs="1" />
+                <xsd:element name="totalChapters" type="xsd:nonNegativeInteger" minOccurs="1" maxOccurs="1" />
+                <xsd:element name="source" type="xsd:string" minOccurs="1" maxOccurs="1" />
+                <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1" />
+                <xsd:element name="isbn" type="xsd:string" minOccurs="0" maxOccurs="1" />
+                <xsd:element ref="author" minOccurs="1" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="author">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute name="translator" type="xsd:boolean" use="optional" />
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="content">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="chapter" minOccurs="1" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="chapter">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="sentence" minOccurs="1" maxOccurs="unbounded" />
+            </xsd:sequence>
+            <xsd:attribute name="num" type="xsd:nonNegativeInteger" use="required" />
+            <xsd:attribute name="name" type="xsd:string" use="optional" />
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="sentence">
+        <xsd:complexType>
+            <xsd:simpleContent>
+                <xsd:extension base="xsd:string">
+                    <xsd:attribute name="num" type="xsd:nonNegativeInteger" use="required" />
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>
