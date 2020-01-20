@@ -62,13 +62,13 @@ def create_xml_file(book_dict, book_metadata):
     file.write(prettify(book_root))
     file.close()
     json_obj = {}
-    bbok_code = book_root.get('code')
+    book_code = book_root.get('code')
     json_obj['xml_file'] = filename
     json_obj['lang'] = lang.text
     json_obj['xml_file_path'] = file_path
     json_obj['is_validated'] = False
     json_obj['is_saved_to_db'] = False
-    add_xml_book_data_to_json(bbok_code, json_obj)
+    add_xml_book_data_to_json(book_code, json_obj)
 
 
 def add_xml_book_data_to_json(book_code, json_obj):

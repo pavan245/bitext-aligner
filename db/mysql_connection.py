@@ -4,9 +4,9 @@ from mysql.connector import errorcode
 import db.read_config as config
 
 
-def get_new_mysql_connection():
+def get_new_mysql_connection(config_file_path):
 
-    db_config = config.read_db_config('../db_config.ini', 'mysql')
+    db_config = config.read_db_config(config_file_path, 'mysql')
 
     connection = None
 
@@ -19,5 +19,11 @@ def get_new_mysql_connection():
             print('Database doesn\'t exist ')
         else:
             print(err)
+
+    if connection is not None:
+        if connection.is_connected():
+            connection.autocommit = False
+        else:
+            connection = None
 
     return connection
