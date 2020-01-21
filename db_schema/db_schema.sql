@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS `bitext-aligner`.`dim_book_info` ;
 CREATE TABLE IF NOT EXISTS `bitext-aligner`.`dim_book_info` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(90) NOT NULL,
-  `description` VARCHAR(200) NULL,
+  `description` VARCHAR(450) NULL,
   `lang` VARCHAR(5) NOT NULL,
   `source` VARCHAR(90) NOT NULL,
   `is_translation` TINYINT NOT NULL,
@@ -124,7 +124,7 @@ DROP TABLE IF EXISTS `bitext-aligner`.`dim_book_sentence` ;
 CREATE TABLE IF NOT EXISTS `bitext-aligner`.`dim_book_sentence` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `s_num` INT UNSIGNED NOT NULL,
-  `text` VARCHAR(500) NOT NULL,
+  `text` VARCHAR(900) NOT NULL,
   `chapter` INT NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `sen_chapter_fk`

@@ -1,11 +1,10 @@
 from csv2df import get_book_content, get_book_metadata
 import xml_parser.create_xml as create_xml
 import xml_parser.read_xml as read_xml
-import xmlschema
-from pathlib import Path
 import xml_parser.validate as validate
 
-# file_path = create_xml.create_xml_file(get_book_content(), get_book_metadata())
+
+file_path = create_xml.create_xml_file(get_book_content(), get_book_metadata())
 
 # print(file_path)
 

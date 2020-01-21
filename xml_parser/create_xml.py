@@ -58,9 +58,9 @@ def create_xml_file(book_dict, book_metadata):
     filename = book_root.get('code') + "_" + lang.text + ".xml"
     file = open(output_dir + '/' + filename, 'w')
     file_path = file.name
-    print('XML File Path :: ', file_path)
     file.write(prettify(book_root))
     file.close()
+    print(const.BLUE, 'Saved XML File Path :: ', file_path, const.END)
     json_obj = {}
     book_code = book_root.get('code')
     json_obj['xml_file'] = filename

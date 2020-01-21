@@ -24,7 +24,10 @@ def save_validated_files_to_db():
                 book_dict = read_xml.parse_xml_file(book['xml_file_path'])
                 result = adb.add_book_to_db(book_code, book_dict)
                 book['is_saved_to_db'] = result
-                print(const.BLUE, 'Result :: ', result, const.END, '\n')
+                w_str = const.WARNING
+                if result:
+                    w_str = const.BLUE
+                print(w_str, 'Result :: ', result, const.END, '\n')
 
     json_data['books'] = books_json
     json_utils.write_json_file(const.JSON_PATH, json_data)

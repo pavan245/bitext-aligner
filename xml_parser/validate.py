@@ -1,8 +1,8 @@
 import xmlschema
 import json
-from pathlib import Path
 import utils.json_utils as json_utils
 import utils.constants as const
+import os
 
 
 def is_valid(book_schema, xml_path):
@@ -10,8 +10,8 @@ def is_valid(book_schema, xml_path):
 
 
 def get_book_schema(book_xsd_path):
-    xsd_path = Path(book_xsd_path)
-    book_schema = xmlschema.XMLSchema(str(xsd_path.absolute()))
+    xsd_full_path = os.path.dirname(os.path.dirname(__file__))+'/'+book_xsd_path
+    book_schema = xmlschema.XMLSchema(xsd_full_path)
     return book_schema
 
 
