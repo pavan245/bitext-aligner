@@ -26,7 +26,7 @@ def validate_all_xml_files():
         books_list = books_json[book_code]
         for book in books_list:
             if book['is_validated']:
-                print('Book : ', book['xml_file'], ' is valid')
+                print(const.BLUE, 'Book : ', book['xml_file'], ' is valid', const.END)
                 continue
             else:
                 if 'xml_file_path' in book:

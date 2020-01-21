@@ -6,7 +6,7 @@ import db.constants as const
 def add_book_to_db(book_code, book_dict):
     # print('Adding Book Code :: ', book_code, ' Dict  :: ', book_dict)
 
-    conn = mysql.get_new_mysql_connection('db_config.ini')
+    conn = mysql.get_new_mysql_connection(const.DB_CONFIG_FILE)
     if conn is None:
         return False
 

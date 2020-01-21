@@ -25,4 +25,9 @@ def read_db_config(filename, section):
     except KeyError:
         print('Please set the Environment Variable ', db['password'])
 
+    try:
+        db['host'] = os.environ[db['host']]
+    except KeyError:
+        print('Please set the Environment Variable ', db['host'])
+
     return db

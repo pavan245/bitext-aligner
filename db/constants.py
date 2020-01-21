@@ -1,3 +1,5 @@
+DB_CONFIG_FILE = 'db_config.ini'
+
 BOOK_INSERT_QUERY = "INSERT INTO dim_book (code, added_at) " \
                     "VALUES (%(code)s, %(added_at)s)"
 
