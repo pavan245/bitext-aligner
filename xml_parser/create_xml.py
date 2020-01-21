@@ -2,7 +2,8 @@ from xml.etree import ElementTree as ET
 from xml.dom import minidom
 import os
 import json
-from pathlib import Path
+import utils.json_utils as json_utils
+import utils.constants as const
 
 
 def create_xml_file(book_dict, book_metadata):
@@ -69,13 +70,12 @@ def create_xml_file(book_dict, book_metadata):
     json_obj['is_saved_to_db'] = False
     add_xml_book_data_to_json(book_code, json_obj)
 
+    return file_path
+
 
 def add_xml_book_data_to_json(book_code, json_obj):
-    json_file_path = Path('json/books.json')
 
-    json_file = open(json_file_path, 'r')
-    json_data = json.load(json_file)
-    json_file.close()
+    json_data = json_utils.read_json_file(const.JSON_PATH)
 
     books = json_data['books']
     if book_code in books.keys():
@@ -85,9 +85,7 @@ def add_xml_book_data_to_json(book_code, json_obj):
 
     json_data['books'] = books
 
-    json_file = open(json_file_path, 'w')
-    json_file.write(json.dumps(json_data, indent=4))
-    json_file.close()
+    json_utils.write_json_file(const.JSON_PATH, json_data)
 
 
 def prettify(root):
