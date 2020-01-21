@@ -3,3 +3,6 @@ google-cloud-storage==1.19.1
 mysql-connector-python==8.0.19
 pandas
 xmlschema
+numpy
+jellyfish
+nltk
