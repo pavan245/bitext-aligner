@@ -2,17 +2,17 @@
 <book code="abc_book">
     <bookInfo>
         <title>Crime and Punishment</title>
+        <lang>en</lang>
+        <isTranslation>true</isTranslation>
+        <totalChapters>2</totalChapters>
+        <source>https://en.wikisource.org/wiki/Crime_and_Punishment</source>
         <description> <!--Optional-->
             Crime and Punishment (Russian: Преступление и наказание) is a novel written by Russian author Fyodor Dostoevsky.
             First published in a journal named The Russian Messenger, it appeared in twelve monthly installments in 1866, and was later published as a novel.
         </description>
-        <lang>en</lang>
+        <isbn>n.a.</isbn> <!--Optional-->
         <author>Fyodor Dostoevsky</author>
         <author translator="true">Constance Garnett</author>
-        <source>https://en.wikisource.org/wiki/Crime_and_Punishment</source>
-        <isTranslation>true</isTranslation>
-        <totalChapters>2</totalChapters>
-        <isbn>n.a.</isbn> <!--Optional-->
     </bookInfo>
     <content>
         <chapter num="1" name="Erstes Kapitel">

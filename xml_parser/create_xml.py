@@ -2,7 +2,8 @@ from xml.etree import ElementTree as ET
 from xml.dom import minidom
 import os
 import json
-from pathlib import Path
+import utils.json_utils as json_utils
+import utils.constants as const
 
 
 def create_xml_file(book_dict, book_metadata):
@@ -24,13 +25,12 @@ def create_xml_file(book_dict, book_metadata):
     total_chapters = ET.SubElement(book_info, 'totalChapters')
     total_chapters.text = book_metadata['totalChapters']
 
+    source = ET.SubElement(book_info, 'source')
+    source.text = book_metadata['source']
+
     if 'description' in book_metadata:
         description = ET.SubElement(book_info, 'description')
         description.text = book_metadata['description']
-
-    if 'source' in book_metadata:
-        source = ET.SubElement(book_info, 'source')
-        source.text = book_metadata['source']
 
     if 'isbn' in book_metadata:
         isbn = ET.SubElement(book_info, 'isbn')
@@ -48,40 +48,44 @@ def create_xml_file(book_dict, book_metadata):
         chapter.set('num', str(key))
         for idx, val in enumerate(book_dict[key]):
             sentence = ET.SubElement(chapter, 'sentence')
-            sentence.set('id', str(idx + 1))
+            sentence.set('num', str(idx + 1))
             sentence.text = val
 
     # tree = ET.ElementTree(book_root)
     # tree.write(filename)
     root_dir = os.path.dirname(os.path.dirname(__file__))
     output_dir = os.path.join(root_dir, "xml_files")
-    filename = book_root.get('id') + "_" + lang.text + ".xml"
+    filename = book_root.get('code') + "_" + lang.text + ".xml"
     file = open(output_dir + '/' + filename, 'w')
     file_path = file.name
-    print('XML File Path :: ', file_path)
     file.write(prettify(book_root))
     file.close()
+    print(const.BLUE, 'Saved XML File Path :: ', file_path, const.END)
     json_obj = {}
-    json_obj['book_id'] = book_root.get('id')
+    book_code = book_root.get('code')
     json_obj['xml_file'] = filename
     json_obj['lang'] = lang.text
     json_obj['xml_file_path'] = file_path
     json_obj['is_validated'] = False
     json_obj['is_saved_to_db'] = False
-    add_xml_book_data_to_json(json_obj)
+    add_xml_book_data_to_json(book_code, json_obj)
+
+    return file_path
 
 
-def add_xml_book_data_to_json(json_obj):
-    json_file_path = Path('json/books.json')
+def add_xml_book_data_to_json(book_code, json_obj):
 
-    json_file = open(json_file_path, 'r')
-    json_data = json.load(json_file)
-    json_file.close()
+    json_data = json_utils.read_json_file(const.JSON_PATH)
 
-    json_file = open(json_file_path, 'w')
-    json_data['books'].append(json_obj)
-    json_file.write(json.dumps(json_data, indent=4))
-    json_file.close()
+    books = json_data['books']
+    if book_code in books.keys():
+        books[book_code].append(json_obj)
+    else:
+        books[book_code] = [json_obj]
+
+    json_data['books'] = books
+
+    json_utils.write_json_file(const.JSON_PATH, json_data)
 
 
 def prettify(root):
