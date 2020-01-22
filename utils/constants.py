@@ -1,6 +1,6 @@
 JSON_PATH = 'json/books.json'
 
-XSD_PATH = 'xml_files/book.xsd'
+XSD_PATH = 'xml_parser/book.xsd'
 
 TRANSLATE_ENV_VAR = 'GOOGLE_APPLICATION_CREDENTIALS'
 

@@ -17,10 +17,10 @@ def save_validated_files_to_db():
         books_list = books_json[book_code]
         for book in books_list:
             if not book['is_validated']:
-                print(const.WARNING, 'Book : ', book['xml_file'], ' is not validated against XSD', const.END)
+                print(const.WARNING, 'XML File :: ', book['xml_file'], ' is not validated against XSD', const.END)
                 continue
             if not book['is_saved_to_db']:
-                print(const.BLUE, 'Adding Book : ', book['xml_file'], ' to the DB', const.END)
+                print(const.BLUE, 'Adding Book Data : ', book['xml_file'], ' to the DB', const.END)
                 book_dict = read_xml.parse_xml_file(book['xml_file_path'])
                 result = adb.add_book_to_db(book_code, book_dict)
                 book['is_saved_to_db'] = result
@@ -35,4 +35,4 @@ def save_validated_files_to_db():
 
 if env.check_env_variables():
     validate_all_xml_files()
-    save_validated_files_to_db()
+    # save_validated_files_to_db()

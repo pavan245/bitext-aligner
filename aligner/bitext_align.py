@@ -1,18 +1,13 @@
 # -*- coding: utf-8 -*- 
 
 
-import os,sys
-import re
-import pandas as pd
-import numpy as np
-from numpy import cumsum
-from pandas import DataFrame
-from nltk import word_tokenize, sent_tokenize
-#import xml.etree.ElementTree as ET
-from jellyfish import levenshtein_distance as lev
-#import six
-from google.cloud import translate_v2 as translate
 from itertools import product as cp
+
+import numpy as np
+import pandas as pd
+from google.cloud import translate_v2 as translate
+from jellyfish import levenshtein_distance as lev
+from nltk import sent_tokenize
 
 translate_client = translate.Client()
 
