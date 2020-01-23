@@ -29,8 +29,8 @@ def write_books_data_to_csv(csv_file_name, books_list):
             writer.writerow(book)
 
 
-def read_data_file(file_path):
-    txt_file_path = os.path.dirname(os.path.dirname(__file__)) + const.DATA_FOLDER + file_path
+def read_data_file(file_name):
+    txt_file_path = os.path.dirname(os.path.dirname(__file__)) + const.DATA_FOLDER + file_name
     with open(txt_file_path, 'r') as file:
         lines = file.readline()
         file.close()
