@@ -1,6 +1,6 @@
 JSON_PATH = 'json/books.json'
 
-XSD_PATH = 'xml_parser/book.xsd'
+XSD_PATH = 'schema/book.xsd'
 
 CSV_FILE = 'books_data.csv'
 
