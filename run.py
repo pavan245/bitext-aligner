@@ -4,6 +4,8 @@ import xml_parser.validate as validate
 import utils.json_utils as json_utils
 import utils.constants as const
 import utils.env_utils as env
+import xml_parser.create_xml as create_xml
+from csv2df import get_book_content, get_book_metadata
 
 
 def validate_all_xml_files():
@@ -33,6 +35,11 @@ def save_validated_files_to_db():
     json_utils.write_json_file(const.JSON_PATH, json_data)
 
 
+def create_xml_file(book_content_dict, book_metadata_dict):
+    create_xml.create_xml_file(book_content_dict, book_metadata_dict)
+
+
 if env.check_env_variables():
-    validate_all_xml_files()
+    create_xml_file(get_book_content(), get_book_metadata())
+    # validate_all_xml_files()
     # save_validated_files_to_db()

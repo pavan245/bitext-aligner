@@ -1,0 +1,16 @@
+Index;BookCode;Language;BookName;Status
+1;dost_cap;en;crime_EN.txt;
+2;dost_cap;fr;crime_FR.txt;
+3;dost_cap;ru;crime_RU.txt;
+4;dost_deadhouse;en;dead_EN.txt;
+5;dost_deadhouse;fr;dead_FR.txt;
+6;dost_deadhouse;ru;dead_RU.txt;
+7;dost_karamazov;en;karamazov_EN.txt;
+8;dost_karamazov;fr;karamazov_FR.txt;
+9;dost_karamazov;ru;karamazov_RU.txt;
+10;dost_poorfolk;en;poor_EN.txt;
+11;dost_poorfolk;fr;poor_FR.txt;
+12;dost_poorfolk;ru;poor_RU.txt;
+13;dost_underground;en;underground_EN.txt;
+14;dost_underground;fr;underground_FR.txt;
+15;dost_underground;ru;underground_RU.txt;

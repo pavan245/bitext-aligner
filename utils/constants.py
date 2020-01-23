@@ -2,6 +2,10 @@ JSON_PATH = 'json/books.json'
 
 XSD_PATH = 'xml_parser/book.xsd'
 
+CSV_FILE = 'books_data.csv'
+
+DATA_FOLDER = '/data/'
+
 TRANSLATE_ENV_VAR = 'GOOGLE_APPLICATION_CREDENTIALS'
 
 MYSQL_PASS_ENV_VAR = 'MYSQL_PASSWORD'

@@ -11,7 +11,7 @@ import pandas as pd
 
 
 def get_text():
-    file = open("C:\\Users\\Nerv\\Text-Technology\\Aligner\\txt\\crime_EN.txt", 'r')
+    file = open("C:\\Users\\Nerv\\Text-Technology\\Aligner\\data\\crime_EN.data", 'r')
     lines = file.readlines()
     file.close()
     count = 0
