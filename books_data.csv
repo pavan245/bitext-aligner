@@ -7,9 +7,7 @@ Index;BookCode;Language;BookName;Source;Encoding;Status
 6;dost_gambler_ende;de;gambler_DE.fb2;http://originalbook.ru/;UTF-8;
 7;dost_gambler_enru;en;gambler_EN.fb2;http://originalbook.ru/;UTF-8;
 8;dost_gambler_enru;ru;gambler_RU.fb2;http://originalbook.ru/;windows-1251;
-7;dost_karamazov;de;karamazov_DE.fb2;http://originalbook.ru/;UTF-8;
-8;dost_karamazov;en;karamazov_EN.fb2;http://originalbook.ru/;UTF-8;
-9;dost_karamazov;ru;karamazov_RU.fb2;http://originalbook.ru/;UTF-8;
-10;dost_underground;de;underground_DE.fb2;http://originalbook.ru/;UTF-8;
-11;dost_underground;en;underground_EN.fb2;http://originalbook.ru/;UTF-8;
-12;dost_underground;ru;undrground_RU.fb2;http://originalbook.ru/;windows-1251;
+9;dost_under_ende;en;underground_EN.fb2;http://originalbook.ru/;UTF-8;
+10;dost_under_ende;de;underground_DE.fb2;http://originalbook.ru/;UTF-8;
+11;dost_under_enru;en;underground_EN.fb2;http://originalbook.ru/;UTF-8;
+12;dost_under_enru;ru;undrground_RU.fb2;http://originalbook.ru/;windows-1251;
