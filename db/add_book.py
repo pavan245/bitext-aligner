@@ -21,7 +21,7 @@ def add_book_to_db(book_code, book_dict):
     # returns the last row id, if row added to the table successfully
     last_rowid = add_book_row_to_table(db_cursor, const.BOOK_INSERT_QUERY, book_row)
     book_id = last_rowid
-    print('Book Row Id :: ', last_rowid)
+    # print('Book Row Id :: ', last_rowid)
 
     book_info_dict = book_dict['bookInfo']
     if last_rowid > 0:
@@ -38,7 +38,7 @@ def add_book_to_db(book_code, book_dict):
 
         # returns the last row id, if row added to the table successfully
         last_rowid = add_book_info_row_to_table(db_cursor, const.BOOK_INFO_INSERT_QUERY, book_info_row)
-        print('Book Info Row Id :: ', last_rowid)
+        # print('Book Info Row Id :: ', last_rowid)
 
     if last_rowid > 0:
         book_info_id = last_rowid
@@ -50,18 +50,18 @@ def add_book_to_db(book_code, book_dict):
                 'total_books': 1
             }
             author_row = search_author(db_cursor, const.AUTHOR_SEARCH_QUERY, author_row)
-            print('Author Search Result :: ', author_row)
+            # print('Author Search Result :: ', author_row)
             if author_row['id'] > 0:
                 author_row['total_books'] = author_row['total_books'] + 1
                 last_rowid = update_author_book_count(db_cursor, const.AUTHOR_UPDATE_QUERY, author_row)
-                print('Author Update Row count :: ', last_rowid)
+                # print('Author Update Row count :: ', last_rowid)
                 if last_rowid <= 0:
                     break
             else:
                 author_row['name'] = author['name']
                 author_row['total_books'] = 1
                 last_rowid = add_author_to_table(db_cursor, const.AUTHOR_INSERT_QUERY, author_row)
-                print('Add Author Row Id :: ', last_rowid)
+                # print('Add Author Row Id :: ', last_rowid)
                 if last_rowid > 0:
                     author_row['id'] = last_rowid
 
@@ -76,7 +76,7 @@ def add_book_to_db(book_code, book_dict):
                 }
 
                 last_rowid = add_author_book_mapping(db_cursor, const.BOOK_AUTHOR_INSERT_QUERY, map_author_book)
-                print('Author Book Mapping Row ID :: ', last_rowid)
+                # print('Author Book Mapping Row ID :: ', last_rowid)
                 if last_rowid < 0:
                     break
 
@@ -87,7 +87,7 @@ def add_book_to_db(book_code, book_dict):
 
         # returns the last row id, if row added to the table successfully
         last_rowid = add_book_content_row_to_table(db_cursor, const.CONTENT_INSERT_QUERY, book_content_row)
-        print('Book Content Row Id :: ', last_rowid)
+        # print('Book Content Row Id :: ', last_rowid)
 
     if last_rowid > 0:
         content_id = last_rowid
@@ -99,7 +99,7 @@ def add_book_to_db(book_code, book_dict):
                 'book_content': content_id
             }
             chapter_id = add_book_chapter_to_table(db_cursor, const.CHAPTER_INSERT_QUERY, book_chapter_row)
-            print('Book Chapter Row Id :: ', chapter_id)
+            # print('Book Chapter Row Id :: ', chapter_id)
             if chapter_id > 0:
                 sentences_dict = chapter['sentences']
                 for s_num in sentences_dict.keys():
@@ -109,7 +109,7 @@ def add_book_to_db(book_code, book_dict):
                         'chapter': chapter_id
                     }
                     sen_id = add_book_sentence_to_table(db_cursor, const.SENTENCE_INSERT_QUERY, sentence_row)
-                    print('Book Sentence Id :: ', sen_id)
+                    # print('Book Sentence Id :: ', sen_id)
                     if sen_id <= 0:
                         break
                     else:

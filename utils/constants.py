@@ -17,3 +17,21 @@ END = '\033[0m'
 
 BLUE = '\033[94m'
 GREEN = '\033[92m'
+
+CHAPTER_NAMES = {
+    'en': 'Chapter',
+    'EN': 'CHAPTER',
+    'de': 'Kapitel',
+    'DE': 'Kapitel',
+    'ru': 'Глава',
+    'RU': 'Глава'
+}
+
+LANGUAGE_NAME = {
+    'en': 'english',
+    'EN': 'english',
+    'de': 'german',
+    'DE': 'german',
+    'ru': 'russian',
+    'RU': 'russian'
+}

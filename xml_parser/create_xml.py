@@ -6,9 +6,9 @@ import utils.json_utils as json_utils
 import utils.constants as const
 
 
-def create_xml_file(book_dict, book_metadata):
+def create_xml_file(book_content, book_metadata):
     book_root = ET.Element('book')
-    book_root.set('code', book_metadata['book_id'])
+    book_root.set('code', book_metadata['book_code'])
 
     book_info = ET.SubElement(book_root, 'bookInfo')
     content = ET.SubElement(book_root, 'content')
@@ -23,7 +23,7 @@ def create_xml_file(book_dict, book_metadata):
     is_translation.text = book_metadata['isTranslation']
 
     total_chapters = ET.SubElement(book_info, 'totalChapters')
-    total_chapters.text = book_metadata['totalChapters']
+    total_chapters.text = str(book_metadata['totalChapters'])
 
     source = ET.SubElement(book_info, 'source')
     source.text = book_metadata['source']
@@ -43,13 +43,17 @@ def create_xml_file(book_dict, book_metadata):
         if 'translator' in auth:
             author.set('translator', auth['translator'])
 
-    for key in book_dict.keys():
-        chapter = ET.SubElement(content, 'chapter')
-        chapter.set('num', str(key))
-        for idx, val in enumerate(book_dict[key]):
-            sentence = ET.SubElement(chapter, 'sentence')
-            sentence.set('num', str(idx + 1))
-            sentence.text = val
+    for chapter in book_content:
+        if 'sentences' not in chapter:
+            continue
+        chapter_element = ET.SubElement(content, 'chapter')
+        chapter_element.set('num', str(chapter['chapter_num']))
+        chapter_element.set('name', chapter['chapter_name'])
+        sentences_dict = chapter['sentences']
+        for key in sentences_dict.keys():
+            sentence = ET.SubElement(chapter_element, 'sentence')
+            sentence.set('num', str(key + 1))
+            sentence.text = sentences_dict[key]
 
     # tree = ET.ElementTree(book_root)
     # tree.write(filename)
@@ -86,6 +90,7 @@ def add_xml_book_data_to_json(book_code, json_obj):
     json_data['books'] = books
 
     json_utils.write_json_file(const.JSON_PATH, json_data)
+    print(const.BLUE, 'Added XML Book Entry to JSON', const.END)
 
 
 def prettify(root):

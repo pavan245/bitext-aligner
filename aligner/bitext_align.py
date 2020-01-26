@@ -15,27 +15,21 @@ translate_client = translate.Client()
 
 '''
 
-
-
 def master_align(text0, text1, lang0, lang1): 
     """ Takes two equivalent texts (original and trnslation) and returns 
         aligned texts. """
     df0 = frame_from_text(text0, lang0, lang1)
-    print('A')
+    # print('A')
     df1 = frame_from_text(text1, lang1, lang0, is1=True)
-    print('B')
+    # print('B')
     # returns dfs with ['sent', 'trans', 'rellen', 'relpos']
     anchors = anchors_from_frames(df0, df1, window=2)
-    print('C')
+    # print('C')
     alignments = intermediate_align(df0, df1, anchors, lookahead=4)
-    print('D')
+    # print('D')
     textdict0, textdict1 = textdicts_from_alignments(df0, df1, alignments)
-    print('E')
+    # print('E')
     return textdict0, textdict1
-
-
-
-
 
 
 def frame_from_text(text, source, target, is1=False): # 
@@ -85,7 +79,7 @@ def intermediate_align(frame0, frame1, anchs, lookahead): #
 
 def get_interalign(df0, df1, anchors_init, anchors_next, lookahead): # 
     """  """
-    print(anchors_init, anchors_next)
+    # print(anchors_init, anchors_next)
     interaligns = []
     i,j = anchors_init
     i+=1
@@ -95,7 +89,7 @@ def get_interalign(df0, df1, anchors_init, anchors_next, lookahead): #
         room0, room1 = min(end0-i,lookahead), min(end1-j,lookahead)
         lambdascore = lambda p,q: score(df0, df1, i, j, p, q)
         i_,j_ = min([(x,y) for x,y in cp(range(i,i+room0),range(j,j+room1)) if x==i or y==j], key=lambda a: lambdascore(*a))
-        print((i,j), (i_,j_))
+        # print((i,j), (i_,j_))
         interaligns.append(((i,j),(i_,j_)))
         i,j = i_+1,j_+1
     return interaligns
@@ -122,10 +116,10 @@ def textdicts_from_alignments(frame0, frame1, aligns): #
     for i,((a0,a1),(b0,b1)) in enumerate(aligns):
         t0 = ' '.join(frame0.loc[a0:b0, 'sent0'])
         t1 = ' '.join(frame1.loc[a1:b1, 'sent1'])
-        print('***************************')
-        print(aligns[i])
-        print(t0)
-        print(t1)
+        # print('***************************')
+        # print(aligns[i])
+        # print(t0)
+        # print(t1)
         textdict0.update({i:t0})
         textdict1.update({i:t1})
     return textdict0, textdict1
