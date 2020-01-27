@@ -5,7 +5,7 @@ import utils.json_utils as json_utils
 import utils.constants as const
 import utils.env_utils as env
 import xml_parser.create_xml as create_xml
-import txt_parser.csv_utils as csv_utils
+import utils.csv_utils as csv_utils
 import fb2_parser.read_fb2 as read_fb2
 import aligner.bitext_align as aligner
 import time
@@ -75,7 +75,7 @@ def read_data_files_and_align_sentences(book_code):
                 book2_chapter.update({'sentences': book2_sen})
                 book1_chapters[idx] = book1_chapter
                 book2_chapters[idx] = book2_chapter
-                time.sleep(60)
+                time.sleep(10)
             if idx == 1:
                 break
 
@@ -92,4 +92,4 @@ def create_xml_file(book_content, book_metadata_dict):
 if env.check_env_variables():
     read_data_files_and_align_sentences('dost_cap_ende')
     validate_all_xml_files()
-    save_validated_files_to_db()
+    # save_validated_files_to_db()

@@ -7,7 +7,9 @@ import numpy as np
 import pandas as pd
 from google.cloud import translate_v2 as translate
 from jellyfish import levenshtein_distance as lev
-from nltk import sent_tokenize
+import nltk
+import utils.constants as const
+nltk.download('punkt')
 
 translate_client = translate.Client()
 
@@ -38,7 +40,7 @@ def frame_from_text(text, source, target, is1=False): #
     cols = [c+str(int(is1)) for c in ['sent','trans','rellen','relpos']]
     #print(cols)
     frame = pd.DataFrame(columns=cols)
-    frame[cols[0]] = sent_tokenize(text)
+    frame[cols[0]] = nltk.sent_tokenize(text, language=const.LANGUAGE_NAME[source])
     frame[cols[1]] = frame[cols[0]].apply(lambda x: translate_client.translate(x, source_language=source, target_language=target, model='nmt')['translatedText'])
     frame[cols[2]] = frame[cols[0]].apply(lambda x: len(x))
     frame[cols[2]] = frame[cols[2]]/frame[cols[2]].max()
