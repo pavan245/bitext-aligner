@@ -64,7 +64,7 @@ def create_xml_file(book_content, book_metadata):
     file_path = file.name
     file.write(prettify(book_root))
     file.close()
-    print(const.BLUE, 'Saved XML File Path :: ', file_path, const.END)
+    print(const.BLUE, 'Saved Book Content to XML File - Path :: ', file_path, const.END)
     json_obj = {}
     book_code = book_root.get('code')
     json_obj['xml_file'] = filename

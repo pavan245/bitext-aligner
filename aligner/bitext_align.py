@@ -5,11 +5,13 @@ from itertools import product as cp
 
 import numpy as np
 import pandas as pd
+import re
 from google.cloud import translate_v2 as translate
 from jellyfish import levenshtein_distance as lev
 import nltk
 import utils.constants as const
 nltk.download('punkt')
+
 
 translate_client = translate.Client()
 
@@ -20,8 +22,8 @@ translate_client = translate.Client()
 def master_align(text0, text1, lang0, lang1): 
     """ Takes two equivalent texts (original and trnslation) and returns 
         aligned texts. """
-    text0 = re.sub(' ?. . . ?| … ?| ?... ?', '… ', text0)
-    text1 = re.sub(' ?. . . ?| … ?| ?... ?', '… ', text1)
+    text0 = re.sub(' ?\\. \\. \\. ?| \\.\\.\\. ?| ?\\.\\.\\. ?', '… ', text0)
+    text1 = re.sub(' ?\\. \\. \\. ?| \\.\\.\\. ?| ?\\.\\.\\. ?', '… ', text1)
     df0 = frame_from_text(text0, lang0, lang1)
     # print('A')
     df1 = frame_from_text(text1, lang1, lang0, is1=True)

@@ -76,13 +76,15 @@ def read_data_files_and_align_sentences(book_code):
                 book1_chapters[idx] = book1_chapter
                 book2_chapters[idx] = book2_chapter
                 time.sleep(10)
-            if idx == 1:
-                break
 
         print(const.BLUE, 'Book Sentence Alignment Done', const.END)
 
         create_xml_file(book1_chapters, book1['metadata'])
         create_xml_file(book2_chapters, book2['metadata'])
+
+    else:
+        print(const.WARNING, 'Unknown Book Code :: ', book_code, const.END)
+        print(const.BLUE, 'Please provide the BookCode from books_data.csv', const.END)
 
 
 def create_xml_file(book_content, book_metadata_dict):
@@ -90,6 +92,6 @@ def create_xml_file(book_content, book_metadata_dict):
 
 
 if env.check_env_variables():
-    read_data_files_and_align_sentences('dost_cap_ende')
+    # read_data_files_and_align_sentences('dost_under_ende')
     validate_all_xml_files()
     # save_validated_files_to_db()

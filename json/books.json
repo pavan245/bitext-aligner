@@ -1,0 +1,20 @@
+{
+    "books": {
+        "dost_under_ende": [
+            {
+                "xml_file": "dost_under_ende_en.xml",
+                "lang": "en",
+                "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_under_ende_en.xml",
+                "is_validated": true,
+                "is_saved_to_db": false
+            },
+            {
+                "xml_file": "dost_under_ende_de.xml",
+                "lang": "de",
+                "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_under_ende_de.xml",
+                "is_validated": true,
+                "is_saved_to_db": false
+            }
+        ]
+    }
+}
