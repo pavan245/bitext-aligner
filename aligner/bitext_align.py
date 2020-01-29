@@ -20,6 +20,8 @@ translate_client = translate.Client()
 def master_align(text0, text1, lang0, lang1): 
     """ Takes two equivalent texts (original and trnslation) and returns 
         aligned texts. """
+    text0 = re.sub(' ?. . . ?| … ?| ?... ?', '… ', text0)
+    text1 = re.sub(' ?. . . ?| … ?| ?... ?', '… ', text1)
     df0 = frame_from_text(text0, lang0, lang1)
     # print('A')
     df1 = frame_from_text(text1, lang1, lang0, is1=True)
