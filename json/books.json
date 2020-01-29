@@ -15,6 +15,22 @@
                 "is_validated": true,
                 "is_saved_to_db": false
             }
+        ],
+        "dost_under_enru": [
+            {
+                "xml_file": "dost_under_enru_en.xml",
+                "lang": "en",
+                "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_under_enru_en.xml",
+                "is_validated": true,
+                "is_saved_to_db": false
+            },
+            {
+                "xml_file": "dost_under_enru_ru.xml",
+                "lang": "ru",
+                "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_under_enru_ru.xml",
+                "is_validated": true,
+                "is_saved_to_db": false
+            }
         ]
     }
 }

@@ -92,6 +92,6 @@ def create_xml_file(book_content, book_metadata_dict):
 
 
 if env.check_env_variables():
-    # read_data_files_and_align_sentences('dost_under_ende')
+    read_data_files_and_align_sentences('dost_under_enru')
     validate_all_xml_files()
     # save_validated_files_to_db()
