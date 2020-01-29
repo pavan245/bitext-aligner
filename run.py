@@ -9,6 +9,7 @@ import utils.csv_utils as csv_utils
 import fb2_parser.read_fb2 as read_fb2
 import aligner.bitext_align as aligner
 import time
+import argparse
 
 
 def validate_all_xml_files():
@@ -33,6 +34,8 @@ def save_validated_files_to_db():
                 if result:
                     w_str = const.BLUE
                 print(w_str, 'Result :: ', result, const.END, '\n')
+            else:
+                print(const.BLUE, "Book Data already added to the Database", const.END)
 
     json_data['books'] = books_json
     json_utils.write_json_file(const.JSON_PATH, json_data)
@@ -91,7 +94,25 @@ def create_xml_file(book_content, book_metadata_dict):
     create_xml.create_xml_file(book_content, book_metadata_dict)
 
 
-if env.check_env_variables():
-    read_data_files_and_align_sentences('dost_under_enru')
-    validate_all_xml_files()
-    # save_validated_files_to_db()
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(
+        description='Choose a run type',
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('-rB', dest='read_book', help='Enter a Book Code from books_data.csv')
+    group.add_argument('-v', dest='validate', action='store_true', help='Validate all the pending XML Files against book.xsd')
+    group.add_argument('-s', dest='save_to_db', action='store_true', help='Save Pending XML Files Content to the Database')
+
+    args = parser.parse_args()
+
+    if env.check_env_variables():
+        if args.read_book and len(args.read_book) > 0:
+            read_data_files_and_align_sentences(args.book_code)
+        elif args.validate:
+            validate_all_xml_files()
+        elif args.save_to_db:
+            save_validated_files_to_db()
+        else:
+            print(const.WARNING, "Invalid Option!", const.END)
