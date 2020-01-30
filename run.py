@@ -79,6 +79,7 @@ def read_data_files_and_align_sentences(book_code):
                 book1_chapters[idx] = book1_chapter
                 book2_chapters[idx] = book2_chapter
                 time.sleep(10)
+                # We need to put some seconds of sleep to avoid getting blocked by Google
 
         print(const.BLUE, 'Book Sentence Alignment Done', const.END)
 
