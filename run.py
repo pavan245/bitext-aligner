@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
     if env.check_env_variables():
         if args.read_book and len(args.read_book) > 0:
-            read_data_files_and_align_sentences(args.book_code)
+            read_data_files_and_align_sentences(args.read_book)
         elif args.validate:
             validate_all_xml_files()
         elif args.save_to_db:
