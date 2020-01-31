@@ -88,7 +88,7 @@ def read_data_files_and_align_sentences(book_code):
 
     else:
         print(const.WARNING, 'Unknown Book Code :: ', book_code, const.END)
-        print(const.BLUE, 'Please provide the BookCode from books_data.csv', const.END)
+        print(const.BLUE, 'Please provide the BookCode from books_data.csv file', const.END)
 
 
 def create_xml_file(book_content, book_metadata_dict):
@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
     if env.check_env_variables():
         if args.read_book and len(args.read_book) > 0:
-            read_data_files_and_align_sentences(args.book_code)
+            read_data_files_and_align_sentences(args.read_book)
         elif args.validate:
             validate_all_xml_files()
         elif args.save_to_db:

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-    <xsl:variable name="book1" select="document('../xml_files/dost_under_enru_en.xml')/*" />
-    <xsl:variable name="book2" select="document('../xml_files/dost_under_enru_ru.xml')/*" />
+    <xsl:variable name="book1" select="document('../xml_files/dost_gambler_enru_en.xml')/*" />
+    <xsl:variable name="book2" select="document('../xml_files/dost_gambler_enru_ru.xml')/*" />
 
 	<xsl:template match="/">
 		<html>
