@@ -7,4 +7,4 @@ FROM
         INNER JOIN
     dim_author ON dim_author.id = map_book_author.author
 WHERE
-    dim_author.name LIKE '%Fjodor%'
+    dim_author.name LIKE '%Fjodor%';
