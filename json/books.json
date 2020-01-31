@@ -6,14 +6,14 @@
                 "lang": "en",
                 "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_under_ende_en.xml",
                 "is_validated": true,
-                "is_saved_to_db": false
+                "is_saved_to_db": true
             },
             {
                 "xml_file": "dost_under_ende_de.xml",
                 "lang": "de",
                 "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_under_ende_de.xml",
                 "is_validated": true,
-                "is_saved_to_db": false
+                "is_saved_to_db": true
             }
         ],
         "dost_under_enru": [
@@ -22,14 +22,46 @@
                 "lang": "en",
                 "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_under_enru_en.xml",
                 "is_validated": true,
-                "is_saved_to_db": false
+                "is_saved_to_db": true
             },
             {
                 "xml_file": "dost_under_enru_ru.xml",
                 "lang": "ru",
                 "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_under_enru_ru.xml",
                 "is_validated": true,
-                "is_saved_to_db": false
+                "is_saved_to_db": true
+            }
+        ],
+        "dost_gambler_ende": [
+            {
+                "xml_file": "dost_gambler_ende_en.xml",
+                "lang": "en",
+                "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_gambler_ende_en.xml",
+                "is_validated": true,
+                "is_saved_to_db": true
+            },
+            {
+                "xml_file": "dost_gambler_ende_de.xml",
+                "lang": "de",
+                "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_gambler_ende_de.xml",
+                "is_validated": true,
+                "is_saved_to_db": true
+            }
+        ],
+        "dost_gambler_enru": [
+            {
+                "xml_file": "dost_gambler_enru_en.xml",
+                "lang": "en",
+                "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_gambler_enru_en.xml",
+                "is_validated": true,
+                "is_saved_to_db": true
+            },
+            {
+                "xml_file": "dost_gambler_enru_ru.xml",
+                "lang": "ru",
+                "xml_file_path": "/Users/pavanmandava/PythonWorkspace/bitext-aligner/xml_files/dost_gambler_enru_ru.xml",
+                "is_validated": true,
+                "is_saved_to_db": true
             }
         ]
     }
