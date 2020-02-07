@@ -1,1 +1,11 @@
-# bitext-aligner
+# bitext-aligner (Parallel Corpus Creation)
+
+In the contemporary era of data-driven Natural Language Processing (NLP), Parallel Corpora has been a key resource in addressing the requirements of our multilingual society. In our project, we were motivated to create a parallel corpus that provided an accessible mapping of two language pairs - Russian-English and German-English. The scope of this, however, can be extended to several other languages. 
+
+Data forms the backbone of our corpus and its collection was the initial task that required us to experiment with several types of file formats. We have used the FictionBook 2.0 or simply, FB2 file format due to its XML parsability and compatibility with the standard XSD format. Furthermore, this format is designed for fictional literature that suited the very nature of our data.
+
+In order to create an efficiently mapped corpus, we developed an aligner that identified and matched the corresponding units of the input text. These units in our project are sentences. Tokenization of these sentences is the first step that contributes towards the overall alignment algorithm. This is followed by their translation using Google’s NMT API. The core part of the aligner is the usage of Levenshtein distance for finding similarity between the original and translated sentences. Through an iterative process, we then find the best matches constrained within a window and perform the alignment. 
+
+The output from the aligner is then saved to multiple XML files. Recording the file path through JSON simplified the management of several stages through its addition to a database. We present our corpus as a web-page and therefore, we used XSLT to transform data from multiple XML files to an HTML file. While the XML/HTML formats enhance the readability of the project, they cannot act upon queries to retrieve information required by the user. Therefore, we used a SQL database (MySQL) to assist the user in querying. 
+
+There are various possible enhancements to our project. Through corpus extension, efficient alignment at a word level, the inclusion of a local NMT engine and noise reduction, our project can be amplified to a much greater extent. Furthermore, analysis of translation styles, language learning and paremiology are some of the areas that can witness the usage of our project. 
