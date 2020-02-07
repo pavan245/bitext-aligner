@@ -14,4 +14,4 @@ FROM
         INNER JOIN
     dim_book_info ON dim_book_info.book = dim_book.id
 WHERE
-    dim_book_sentence.text LIKE '%spiteful%';
+    dim_book_sentence.text LIKE '%Mensch%';

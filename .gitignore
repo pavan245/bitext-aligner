@@ -129,6 +129,5 @@ dmypy.json
 .pyre/
 
 .idea
-*.mwb
 
 .DS_Store
