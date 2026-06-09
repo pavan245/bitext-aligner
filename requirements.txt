@@ -1,6 +1,6 @@
 google-cloud-translate==2.0.0
 google-cloud-storage==1.19.1
-mysql-connector-python==8.0.19
+mysql-connector-python==9.1.0
 pandas
 xmlschema
 numpy
